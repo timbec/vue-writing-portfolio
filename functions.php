@@ -25,7 +25,7 @@ add_action( 'wp_enqueue_scripts', 'wt_scripts' );
 /**
  * Custom Post Types.
  */
-require get_parent_theme_file_path( '/cpt.php' );
+//require get_parent_theme_file_path( '/cpt.php' );
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +41,8 @@ function prepare_rest($data, $post, $request){
     $full = wp_get_attachment_image_src( $thumbnail_id, 'full' );
     //Categories
     $cats = get_the_category($post->ID);
+	 //Writing Groups
+	 $write_group = get_the_terms($post->ID, 'writing_type');
     //next/prev
 
     $nextPost = get_adjacent_post(false, '', true );
@@ -51,6 +53,7 @@ function prepare_rest($data, $post, $request){
     $_data['fi_medium'] = $thumbnailMedium[0];
     $_data['full'] = $full[0];
     $_data['cats'] = $cats;
+	 $_data['writing_group'] = $write_group;
     $_data['next_post'] = $nextPost;
     $_data['previous_post'] = $prevPost;
     $data->data = $_data;

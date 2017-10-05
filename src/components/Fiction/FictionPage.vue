@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="">
+     <h3>Child Page</h3>
      <ul>
         <li>Uranium City Return</li>
         <li>Other Novels</li>
